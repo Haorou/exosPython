@@ -65,7 +65,7 @@ def plusOuMoinsUntilVictory():
         nombreJoueur = lireChiffreClavier()
     comparer(nombreJoueur, nombreCible)
 
-## plusOuMoinsUntilVictory()
+# plusOuMoinsUntilVictory()
 
 ##Faire un programme qui retourne, en plus, le nombre de tentatives effectuées
 
@@ -92,22 +92,23 @@ def estPlusGrand(aDeviner,rechercheNombre):
 
 
 def rechercheDichotomie(min, max):
-    nombreADeviner = tirer(min,max)
-    rechercheNombreMin = min
-    rechercheNombreMax = max
-    rechercheNombre = tirer(rechercheNombreMin,rechercheNombreMax)
-
-    compteur = 1
-    while(nombreADeviner != rechercheNombre):
-        if(estPlusGrand(nombreADeviner, rechercheNombre)):
-            rechercheNombreMin = rechercheNombre
-        else:
-            rechercheNombreMax = rechercheNombre     
-        compteur += 1
+    if(min > max):
+        nombreADeviner = tirer(min,max)
+        rechercheNombreMin = min
+        rechercheNombreMax = max
         rechercheNombre = tirer(rechercheNombreMin,rechercheNombreMax)
-    else:
-        print "Trouve apres " + str(compteur) + " fois."
-        return compteur #ajout pour la suite
+
+        compteur = 1
+        while(nombreADeviner != rechercheNombre):
+            if(estPlusGrand(nombreADeviner, rechercheNombre)):
+                rechercheNombreMin = rechercheNombre
+            else:
+                rechercheNombreMax = rechercheNombre     
+            compteur += 1
+            rechercheNombre = tirer(rechercheNombreMin,rechercheNombreMax)
+        else:
+            print "Trouve apres " + str(compteur) + " fois."
+            return compteur #ajout pour la suite
 
 # rechercheDichotomie(1,100)
 
