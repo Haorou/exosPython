@@ -43,7 +43,7 @@ def comparer(nombre, cible):
         message = "Le nombre de l'ordinateur est plus petit que celui du joueur"
     elif cible == nombre:
         message = "Le nombre de l'ordinateur est egal a celui du joueur"
-    print message
+    return message
 
 ##Plus ou moins ?
 ##Faire une méthode qui tire un nombre cible au hasard sur
@@ -53,10 +53,7 @@ def comparer(nombre, cible):
 def plusOuMoins():
     nombreCible = tirerD6()
     nombreJoueur = lireChiffreClavier()
-    comparer(nombreJoueur, nombreCible)
-
-## plusOuMoins()
-
+    print comparer(nombreJoueur, nombreCible)
 
 ##Faire un programme qui boucle jusqu'à ce que la cible ait été trouvée
 
