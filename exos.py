@@ -101,10 +101,9 @@ def rechercheDichotomie(min, max):
     while(nombreADeviner != rechercheNombre):
         if(estPlusGrand(nombreADeviner, rechercheNombre)):
             rechercheNombreMin = rechercheNombre
-            compteur += 1
         else:
-            rechercheNombreMax = rechercheNombre
-            compteur += 1
+            rechercheNombreMax = rechercheNombre     
+        compteur += 1
         rechercheNombre = tirer(rechercheNombreMin,rechercheNombreMax)
     else:
         print "Trouve apres " + str(compteur) + " fois."
@@ -144,7 +143,7 @@ def afficherChiffre(valeur):
             chiffre = "* *\n* *\n* *"
     print chiffre
 
-# afficherChiffre(1)
+# afficherChiffre(tirerD6())
 
 
 ##Yams / Yathzee
