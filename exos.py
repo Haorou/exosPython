@@ -385,14 +385,13 @@ def Yams():
     liste = []
     while (score < 5000):
         liste = relancer3fois()
-    if(full(liste)):
-        pass
-    if(brelan(liste)[0]):
-        if(brelan(liste)[1] == 1):
-            score += 1000
-        else:
-            score += 100
-
+        if(full(liste)):
+            pass
+        if(brelan(liste)[0]):
+            if(brelan(liste)[1] == 1):
+                score += 1000
+            else:
+                score += 100
 
 # La feuille de points peut
 ##être représentée par un dictionnaire Python qui associe une mission à une
