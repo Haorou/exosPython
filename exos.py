@@ -6,7 +6,7 @@ import random
 ##entre mini et maxi
 
 def tirer(min, max):
-    if min >=1 and max >=1:
+    if min >=0 and max >=1:
         return random.randint(min, max)
 
 ## print tirer(1,100)
@@ -91,8 +91,8 @@ def estPlusGrand(aDeviner,rechercheNombre):
     return (aDeviner > rechercheNombre)
 
 
-def rechercheDichotomie(min, max):
-    if(min > max):
+def rechercheDichotomiePourrie(min, max):
+    if(min < max):
         nombreADeviner = tirer(min,max)
         rechercheNombreMin = min
         rechercheNombreMax = max
@@ -102,24 +102,48 @@ def rechercheDichotomie(min, max):
         while(nombreADeviner != rechercheNombre):
             if(estPlusGrand(nombreADeviner, rechercheNombre)):
                 rechercheNombreMin = rechercheNombre
+                rechercheNombre = tirer(rechercheNombreMin +1,rechercheNombreMax)
             else:
-                rechercheNombreMax = rechercheNombre     
+                rechercheNombreMax = rechercheNombre
+                rechercheNombre = tirer(rechercheNombreMin,rechercheNombreMax -1)
             compteur += 1
-            rechercheNombre = tirer(rechercheNombreMin,rechercheNombreMax)
+
         else:
             print "Trouve apres " + str(compteur) + " fois."
             return compteur #ajout pour la suite
 
-# rechercheDichotomie(1,100)
+# rechercheDichotomiePourrie(1,100)
+
+def rechercheDichotomie(min, max):
+    if(min < max):
+        nombreADeviner = tirer(min,max)
+        rechercheNombreMin = min
+        rechercheNombreMax = max
+        rechercheNombre = (rechercheNombreMin + rechercheNombreMax) / 2
+        compteur = 1
+        while(nombreADeviner != rechercheNombre):
+            if(estPlusGrand(nombreADeviner, rechercheNombre)):
+                rechercheNombreMin = rechercheNombre
+                rechercheNombre = (rechercheNombreMin +1 + rechercheNombreMax) / 2
+            else:
+                rechercheNombreMax = rechercheNombre
+                rechercheNombre = (rechercheNombreMin + rechercheNombreMax -1) / 2
+            compteur += 1
+
+        else:
+            print "Trouve apres " + str(compteur) + " fois."
+            return compteur #ajout pour la suite
+
+# rechercheDichotomie(0,100)
 
 ##Bonus, regarder combien de coups, en moyenne, le programme utilise pour
 ##trouver la réponse. Tester sur 100000 parties.
 
 def moyenneCompteurVictoire():
     countCompteurs = 0
-    for i in range (100000) :
+    for i in range (100) :
         countCompteurs += rechercheDichotomie(1,100)
-    moyenne = countCompteurs / 100000
+    moyenne = countCompteurs / 100
     print "En moyenne pour min 1 et max 100, l'ordinateur trouve en " + str(moyenne) + " coups"
 
 # moyenneCompteurVictoire()
