@@ -123,18 +123,17 @@ def rechercheDichotomie(min, max):
         compteur = 1
         while(nombreADeviner != rechercheNombre):
             if(estPlusGrand(nombreADeviner, rechercheNombre)):
-                rechercheNombreMin = rechercheNombre
-                rechercheNombre = (rechercheNombreMin +1 + rechercheNombreMax) / 2
+                rechercheNombreMin = rechercheNombre +1
             else:
-                rechercheNombreMax = rechercheNombre
-                rechercheNombre = (rechercheNombreMin + rechercheNombreMax -1) / 2
+                rechercheNombreMax = rechercheNombre -1
+            rechercheNombre = (rechercheNombreMin + rechercheNombreMax) / 2
             compteur += 1
 
         else:
             print "Trouve apres " + str(compteur) + " fois."
             return compteur #ajout pour la suite
 
-# rechercheDichotomie(0,100)
+rechercheDichotomie(0,100)
 
 ##Bonus, regarder combien de coups, en moyenne, le programme utilise pour
 ##trouver la réponse. Tester sur 100000 parties.
